@@ -1,0 +1,5 @@
+export const InputsActionTypes = {
+  SET_PRICE: "SET_PRICE",
+  SET_INITIAL_PAYMENT: "SET_INITIAL_PAYMENT",
+  SET_LEASING_TERM: "SET_LEASING_TERM",
+};

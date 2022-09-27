@@ -1,7 +1,7 @@
 export const initialInputState = {
   price: {
-    procentValue: 0,
-    value: 0,
+    procentValue: 16.6,
+    value: 1000000,
   },
   leasing: {
     procentValue: 0,

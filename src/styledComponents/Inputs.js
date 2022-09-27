@@ -16,7 +16,7 @@ const animatedSlider = css`
   background-repeat: no-repeat;
   ${(props) =>
     css`
-      background-size: ${props.val}% 100%;
+      background-size: ${props.value}% 100%;
     `}
 `;
 

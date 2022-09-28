@@ -4,11 +4,11 @@ export const initialInputState = {
     value: 1000000,
   },
   leasing: {
-    procentValue: 0,
-    value: 0,
+    procentValue: 1,
+    value: 1,
   },
   payment: {
-    procentValue: 0,
-    value: 0,
+    procentValue: 10,
+    value: 100000, // min price / 10 min procent =  100000
   },
 };

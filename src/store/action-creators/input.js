@@ -33,7 +33,7 @@ export const setInitialPaymant = (procentValue, priceAuto) => (dispatch) => {
   };
 
   dispatch({
-    type: InputsActionTypes.SET_PRICE,
+    type: InputsActionTypes.SET_INITIAL_PAYMENT,
     payload: paymentState,
   });
 };
@@ -46,7 +46,7 @@ export const setLeasingTerm = (procentValue) => (dispatch) => {
   };
 
   dispatch({
-    type: InputsActionTypes.SET_PRICE,
+    type: InputsActionTypes.SET_LEASING_TERM,
     payload: leasingState,
   });
 };

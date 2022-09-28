@@ -14,7 +14,7 @@ const PriceRangeInput = () => {
   return (
     <Container>
       <NekstBlackH3>Стоимость автомобиля</NekstBlackH3>
-      <ValuedRangeInput value={price.procentValue} setValue={setValue}>
+      <ValuedRangeInput value={price.procentValue} setValue={setValue} step={5}>
         <ValueContainer>
           <BoldP30>{price.value}</BoldP30>
           <BoldP30>₽</BoldP30>

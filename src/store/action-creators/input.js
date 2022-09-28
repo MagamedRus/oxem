@@ -1,13 +1,35 @@
 import { InputsActionTypes } from "../../constants/store/actionTypes";
 import { price, leasingTerm, initialPayment } from "../../constants/calc";
 
-export const setPrice = (procentValue) => (dispatch) => {
-  const minPriceProcent =  (price.min / price.max) * 100;
+export const setProcentPrice = (procentValue) => (dispatch) => {
+  const minPriceProcent = (price.min / price.max) * 100;
   procentValue =
     procentValue < minPriceProcent ? minPriceProcent : procentValue;
   let value = price.max * (procentValue / 100);
   value = Math.round(value);
   value = value < price.min ? price.min : value;
+
+  const priceState = {
+    procentValue,
+    value,
+  };
+
+  dispatch({
+    type: InputsActionTypes.SET_PRICE,
+    payload: priceState,
+  });
+};
+
+export const setValuePrice = (value) => (dispatch) => {
+  const minPriceProcent = (price.min / price.max) * 100;
+  let procentValue = (value / price.max) * 100;
+
+  if (procentValue < minPriceProcent) procentValue = minPriceProcent;
+  if (procentValue > 100) procentValue = 100;
+  value = (price.max * procentValue) / 100;
+
+  value = Math.round(value);
+  procentValue = Math.round(procentValue);
 
   const priceState = {
     procentValue,
@@ -42,13 +64,6 @@ export const setProcentPaymant = (procentValue, priceAuto) => (dispatch) => {
 
 export const setValuePaymant = (value, priceAuto) => (dispatch) => {
   let procentValue = (value / priceAuto) * 100;
-
-  value =
-    (procentValue < initialPayment.min &&
-      (priceAuto * initialPayment.min) / 100) ||
-    (procentValue > initialPayment.max &&
-      (priceAuto * initialPayment.max) / 100) ||
-    value;
 
   procentValue =
     (procentValue < initialPayment.min && initialPayment.min) ||

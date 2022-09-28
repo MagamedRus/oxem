@@ -55,6 +55,8 @@ export const setValuePaymant = (value, priceAuto) => (dispatch) => {
     (procentValue > initialPayment.max && initialPayment.max) ||
     procentValue;
 
+  value = (priceAuto * procentValue) / 100;
+
   value = Math.round(value);
   procentValue = Math.round(procentValue);
 

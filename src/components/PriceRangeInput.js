@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { NekstBlackH3 } from "../styledComponents/Headers";
+import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
 import ValuedRangeInput from "./ValuedRangeInput";
 import { setPrice } from "../store/action-creators/input";
@@ -13,7 +13,7 @@ const PriceRangeInput = () => {
 
   return (
     <Container>
-      <NekstBlackH3>Стоимость автомобиля</NekstBlackH3>
+      <GilroyH3>Стоимость автомобиля</GilroyH3>
       <ValuedRangeInput value={price.procentValue} setValue={setValue} step={5}>
         <ValueContainer>
           <BoldP30>{price.value}</BoldP30>

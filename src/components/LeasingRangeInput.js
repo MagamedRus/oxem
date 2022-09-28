@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { NekstBlackH3 } from "../styledComponents/Headers";
+import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
 import ValuedRangeInput from "./ValuedRangeInput";
 import { setLeasingTerm } from "../store/action-creators/input";
@@ -13,7 +13,7 @@ const LeasingRangeInput = () => {
 
   return (
     <Container>
-      <NekstBlackH3>Срок лизинга</NekstBlackH3>
+      <GilroyH3>Срок лизинга</GilroyH3>
       <ValuedRangeInput value={leasing.procentValue} setValue={setValue}>
         <ValueContainer>
           <BoldP30>{leasing.value}</BoldP30>

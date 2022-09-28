@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { NekstBlackH3 } from "../styledComponents/Headers";
+import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
 import ValuedRangeInput from "./ValuedRangeInput";
 import { setInitialPaymant } from "../store/action-creators/input";
@@ -22,7 +22,7 @@ const PaymentRangeInput = () => {
 
   return (
     <Container>
-      <NekstBlackH3>Первоначальный взнос</NekstBlackH3>
+      <GilroyH3>Первоначальный взнос</GilroyH3>
       <ValuedRangeInput value={payment.procentValue} setValue={setValue}>
         <ValueContainer>
           <BoldP30>{payment.value} ₽</BoldP30>

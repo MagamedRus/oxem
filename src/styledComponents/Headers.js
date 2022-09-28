@@ -20,7 +20,7 @@ export const NekstBlackH2 = styled.h2`
   color: #575757;
 `;
 
-export const NekstBlackH3 = styled.h3`
+export const GilroyH3 = styled.h3`
   font-family: "Gilroy";
   font-style: normal;
   font-weight: 400;

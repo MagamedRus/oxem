@@ -24,13 +24,13 @@ export const StyledRangeInput = styled.input.attrs({
   type: "range",
 })`
   -webkit-appearance: none;
-  width: 100%;
+  
   height: 1px;
   background: rgba(255, 255, 255, 0.6);
   background: #e1e1e1;
   margin: 0;
   &::-ms-track {
-    width: 100%;
+    
     cursor: pointer;
     background: transparent;
     border-color: transparent;

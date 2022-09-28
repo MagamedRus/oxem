@@ -15,7 +15,7 @@ const LeasingRangeInput = () => {
   return (
     <Container>
       <GilroyH3>Срок лизинга</GilroyH3>
-      <ValuedRangeInput value={leasing.procentValue} setValue={setValue}>
+      <ValuedRangeInput step={1.66} value={leasing.procentValue} setValue={setValue}>
         <ValueContainer>
           <BoldP30>{numberWithSpaces(leasing.value)}</BoldP30>
           <BoldP30>мес.</BoldP30>

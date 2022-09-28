@@ -20,7 +20,7 @@ export const setPrice = (procentValue) => (dispatch) => {
 
 export const setInitialPaymant = (procentValue, priceAuto) => (dispatch) => {
   procentValue =
-    (procentValue < initialPayment.min && initialPayment.min) || procentValue
+    (procentValue < initialPayment.min && initialPayment.min) || procentValue;
   let value = priceAuto * (procentValue / 100) * 0.6;
   value = Math.round(value);
 
@@ -38,6 +38,8 @@ export const setInitialPaymant = (procentValue, priceAuto) => (dispatch) => {
 export const setLeasingTerm = (procentValue) => (dispatch) => {
   let value = leasingTerm.max * (procentValue / 100) || leasingTerm.min;
   value = Math.round(value);
+  procentValue = parseInt(procentValue) < 1.6 ?  1.6 : procentValue;
+  console.log(procentValue)
   const leasingState = {
     procentValue,
     value,

@@ -13,7 +13,7 @@ const LeasingRangeInput = () => {
 
   return (
     <Container>
-      <NekstBlackH3>Первоначальный взнос</NekstBlackH3>
+      <NekstBlackH3>Срок лизинга</NekstBlackH3>
       <ValuedRangeInput value={leasing.procentValue} setValue={setValue}>
         <ValueContainer>
           <BoldP30>{leasing.value}</BoldP30>

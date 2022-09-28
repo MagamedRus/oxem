@@ -5,6 +5,7 @@ import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
 import ValuedRangeInput from "./ValuedRangeInput";
 import { setLeasingTerm } from "../store/action-creators/input";
+import { numberWithSpaces } from "../common/composeNumber";
 
 const LeasingRangeInput = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const LeasingRangeInput = () => {
       <GilroyH3>Срок лизинга</GilroyH3>
       <ValuedRangeInput value={leasing.procentValue} setValue={setValue}>
         <ValueContainer>
-          <BoldP30>{leasing.value}</BoldP30>
+          <BoldP30>{numberWithSpaces(leasing.value)}</BoldP30>
           <BoldP30>мес.</BoldP30>
         </ValueContainer>
       </ValuedRangeInput>

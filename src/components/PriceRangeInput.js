@@ -5,6 +5,7 @@ import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
 import ValuedRangeInput from "./ValuedRangeInput";
 import { setPrice } from "../store/action-creators/input";
+import { numberWithSpaces } from "../common/composeNumber";
 
 const PriceRangeInput = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const PriceRangeInput = () => {
       <GilroyH3>Стоимость автомобиля</GilroyH3>
       <ValuedRangeInput value={price.procentValue} setValue={setValue} step={5}>
         <ValueContainer>
-          <BoldP30>{price.value}</BoldP30>
+          <BoldP30>{numberWithSpaces(price.value)}</BoldP30>
           <BoldP30>₽</BoldP30>
         </ValueContainer>
       </ValuedRangeInput>

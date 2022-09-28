@@ -5,6 +5,7 @@ import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
 import ValuedRangeInput from "./ValuedRangeInput";
 import { setInitialPaymant } from "../store/action-creators/input";
+import { numberWithSpaces } from "../common/composeNumber";
 
 const PaymentRangeInput = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const PaymentRangeInput = () => {
       <GilroyH3>Первоначальный взнос</GilroyH3>
       <ValuedRangeInput value={payment.procentValue} setValue={setValue}>
         <ValueContainer>
-          <BoldP30>{payment.value} ₽</BoldP30>
+          <BoldP30>{numberWithSpaces(payment.value)} ₽</BoldP30>
           <ProcentBoldP20>{payment.procentValue}%</ProcentBoldP20>
         </ValueContainer>
       </ValuedRangeInput>

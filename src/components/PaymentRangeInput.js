@@ -1,32 +1,40 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
 import ValuedRangeInput from "./ValuedRangeInput";
-import { setInitialPaymant } from "../store/action-creators/input";
+import {
+  setProcentPaymant,
+  setValuePaymant,
+} from "../store/action-creators/input";
 import { numberWithSpaces } from "../common/composeNumber";
+import { TransparentTextInput } from "../styledComponents/Inputs";
 
 const PaymentRangeInput = () => {
   const dispatch = useDispatch();
   const payment = useSelector((state) => state.input.payment);
   const price = useSelector((state) => state.input.price);
 
-  const setValue = useCallback(
-    (procentValue) => dispatch(setInitialPaymant(procentValue, price.value)),
-    [dispatch, price]
-  );
+  const setProcentValue = (procentValue) =>
+    dispatch(setProcentPaymant(procentValue, price.value));
+
+  const onTextInput = (val) =>
+    dispatch(setValuePaymant(val.target.value, price.value));
 
   useEffect(() => {
-    setValue(payment.procentValue);
-  }, [payment.procentValue, setValue]);
+    dispatch(setProcentPaymant(payment.procentValue, price.value));
+  }, [dispatch, payment.procentValue, price.value]);
 
   return (
     <Container>
       <GilroyH3>Первоначальный взнос</GilroyH3>
-      <ValuedRangeInput value={payment.procentValue} setValue={setValue}>
+      <ValuedRangeInput value={payment.procentValue} setValue={setProcentValue}>
         <ValueContainer>
-          <BoldP30>{numberWithSpaces(payment.value)} ₽</BoldP30>
+          <TransparentTextInput
+            onInput={onTextInput}
+            value={`${numberWithSpaces(payment.value)} ₽`}
+          />
           <ProcentBoldP20>{payment.procentValue}%</ProcentBoldP20>
         </ValueContainer>
       </ValuedRangeInput>
@@ -41,14 +49,13 @@ const Container = styled.div`
   justify-content: space-between;
   flex-direction: column;
   height: 119px;
-  
 `;
 
 const ValueContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
   height: 100%;
 `;
 

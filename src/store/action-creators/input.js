@@ -86,10 +86,35 @@ export const setValuePaymant = (value, priceAuto) => (dispatch) => {
   });
 };
 
-export const setLeasingTerm = (procentValue) => (dispatch) => {
+export const setProcentLeasing = (procentValue) => (dispatch) => {
   let value = leasingTerm.max * (procentValue / 100) || leasingTerm.min;
   value = Math.round(value);
   procentValue = parseInt(procentValue) < 1.6 ? 1.6 : procentValue;
+  const leasingState = {
+    procentValue,
+    value,
+  };
+
+  dispatch({
+    type: InputsActionTypes.SET_LEASING_TERM,
+    payload: leasingState,
+  });
+};
+
+export const setValueLeasing = (value) => (dispatch) => {
+  // let value = leasingTerm.max * (procentValue / 100) || leasingTerm.min;
+  // value = Math.round(value);
+  // procentValue = parseInt(procentValue) < 1.6 ? 1.6 : procentValue;
+
+  const minLeasingProcent = (leasingTerm.min / leasingTerm.max) * 100;
+  let procentValue = (value / leasingTerm.max) * 100;
+
+  if (procentValue < minLeasingProcent) procentValue = minLeasingProcent;
+  if (procentValue > 100) procentValue = 100;
+  value = (leasingTerm.max * procentValue) / 100;
+  value = Math.round(value);
+  procentValue = Math.round(procentValue);
+
   const leasingState = {
     procentValue,
     value,

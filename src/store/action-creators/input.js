@@ -2,7 +2,9 @@ import { InputsActionTypes } from "../../constants/store/actionTypes";
 import { price, leasingTerm, initialPayment } from "../../constants/calc";
 
 export const setPrice = (procentValue) => (dispatch) => {
-  procentValue = procentValue < 16.6 ? 16.6 : procentValue;
+  const minPriceProcent =(price.min / price.max) * 100;
+  procentValue =
+    procentValue < minPriceProcent ? minPriceProcent : procentValue;
   let value = price.max * (procentValue / 100);
   value = Math.round(value);
   value = value < price.min ? price.min : value;

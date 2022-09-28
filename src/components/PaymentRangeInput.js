@@ -27,7 +27,6 @@ const PaymentRangeInput = () => {
   };
 
   useEffect(() => {
-    console.log("=")
     dispatch(setProcentPaymant(payment.procentValue, price.value));
   }, [dispatch, payment.procentValue, price]);
 

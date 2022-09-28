@@ -61,7 +61,7 @@ export const TransparentTextInput = styled.input.attrs({
 })`
   background: transparent;
   border: 0;
-  width: max-content;
+  width: 100%;
   height: 100%;
   font-family: "Nekst-Black";
   font-style: normal;

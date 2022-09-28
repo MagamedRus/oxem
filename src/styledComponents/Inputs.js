@@ -24,13 +24,12 @@ export const StyledRangeInput = styled.input.attrs({
   type: "range",
 })`
   -webkit-appearance: none;
-  
+
   height: 1px;
   background: rgba(255, 255, 255, 0.6);
   background: #e1e1e1;
   margin: 0;
   &::-ms-track {
-    
     cursor: pointer;
     background: transparent;
     border-color: transparent;
@@ -55,4 +54,20 @@ export const StyledRangeInput = styled.input.attrs({
     border-radius: 1px 1px 0 0;
     ${animatedSlider}
   }
+`;
+
+export const TransparentTextInput = styled.input.attrs({
+  type: "text",
+})`
+  background: transparent;
+  border: 0;
+  width: max-content;
+  height: 100%;
+  font-family: "Nekst-Black";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 36px;
+  color: #575757;
+  outline: none;
 `;

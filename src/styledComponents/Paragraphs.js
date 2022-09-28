@@ -7,4 +7,5 @@ export const BoldP30 = styled.p`
   font-size: 30px;
   line-height: 36px;
   color: #575757;
+  margin: 0;
 `;

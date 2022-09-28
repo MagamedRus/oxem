@@ -27,4 +27,5 @@ export const GilroyH3 = styled.h3`
   font-size: 16px;
   line-height: 20px;
   color: #575757;
+  margin: 0;
 `;

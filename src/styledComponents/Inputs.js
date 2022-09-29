@@ -4,11 +4,17 @@ const sliderThumbStyles = css`
   -webkit-appearance: none;
   height: 20px;
   width: 20px;
-  border-radius: 10px;
+  border-radius: 50%;
   background: #ff9514;
   cursor: pointer;
   position: relative;
   top: -10px;
+  top: -10px;
+  &:active {
+    width: 24px;
+    height: 24px;
+    top: -12px;
+  }
 `;
 
 const animatedSlider = css`
@@ -24,7 +30,6 @@ export const StyledRangeInput = styled.input.attrs({
   type: "range",
 })`
   -webkit-appearance: none;
-
   height: 1px;
   background: rgba(255, 255, 255, 0.6);
   background: #e1e1e1;

@@ -125,3 +125,10 @@ export const setValueLeasing = (value) => (dispatch) => {
     payload: leasingState,
   });
 };
+
+export const setIsTyping = (isTyping) => (dispatch) => {
+  dispatch({
+    type: InputsActionTypes.SET_IS_TYPING,
+    payload: isTyping,
+  });
+};

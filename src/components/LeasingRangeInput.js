@@ -10,6 +10,8 @@ import {
   setValueLeasing,
 } from "../store/action-creators/input";
 import { TransparentTextInput } from "../styledComponents/Inputs";
+import { leasingTerm } from "../constants/calc";
+import { roundIfFloat } from "../common/calc";
 
 function LeasingRangeInput() {
   const [isFocus, setIsFocus] = useState(false);
@@ -32,8 +34,11 @@ function LeasingRangeInput() {
     textInputRef.typingTimer = setTimeout(onEndType.bind(this, currValue), 500);
   };
 
-  const setProcentValue = (procentValue) =>
-    dispatch(setProcentLeasing(procentValue));
+  const setProcentValue = (procentValue) => {
+    procentValue = roundIfFloat(procentValue);
+    const currValue = (leasingTerm.max * procentValue) / 100;
+    currValue >= leasingTerm.min && dispatch(setProcentLeasing(procentValue));
+  };
 
   // Change is typing state in reducer
   const setTypingState = (isTyping) => dispatch(setIsTyping(isTyping));

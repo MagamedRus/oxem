@@ -13,6 +13,7 @@ import { numberWithSpaces, deleteLastNumber } from "../common/composeNumber";
 import { TransparentTextInput } from "../styledComponents/Inputs";
 import { backspaceTypeInput } from "../common/onInputTypes";
 import { roundIfFloat } from "../common/calc";
+import { initialPayment } from "../constants/calc";
 
 const PaymentRangeInput = () => {
   const payment = useSelector((state) => state.input.payment);
@@ -23,8 +24,11 @@ const PaymentRangeInput = () => {
   const dispatch = useDispatch();
   const textInputRef = useRef();
 
-  const setProcentValue = (procentValue) =>
-    dispatch(setProcentPaymant(procentValue, price.value));
+  const setProcentValue = (procentValue) => {
+    procentValue >= initialPayment.min &&
+      procentValue <= initialPayment.max &&
+      dispatch(setProcentPaymant(procentValue, price.value));
+  };
 
   //Set value in store after end of typing
   const setDeboundedInput = (currValue) => {

@@ -11,6 +11,8 @@ import {
 } from "../store/action-creators/input";
 import { numberWithSpaces } from "../common/composeNumber";
 import { TransparentTextInput } from "../styledComponents/Inputs";
+import { price as priceRange } from "../constants/calc";
+import { roundIfFloat } from "../common/calc";
 
 const PriceRangeInput = () => {
   const price = useSelector((state) => state.input.price);
@@ -38,8 +40,11 @@ const PriceRangeInput = () => {
     setTypingState(false);
   };
 
-  const setProcentValue = (procentValue) =>
-    dispatch(setProcentPrice(procentValue));
+  const setProcentValue = (procentValue) => {
+    procentValue = roundIfFloat(procentValue);
+    const currValue = (priceRange.max * procentValue) / 100;
+    currValue >= priceRange.min && dispatch(setProcentPrice(procentValue));
+  };
 
   // Change is typing state in reducer
   const setTypingState = (isTyping) => dispatch(setIsTyping(isTyping));

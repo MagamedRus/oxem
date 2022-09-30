@@ -13,7 +13,7 @@ export const calcSumLeasingPayment = (
 
 export const roundIfFloat = (numb) => {
   if (String(numb).includes(".")) {
-    numb = Math.trunc(numb);
+    numb = Math.round(numb);
   }
   return numb;
 };

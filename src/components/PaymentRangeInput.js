@@ -1,53 +1,81 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
 import ValuedRangeInput from "./ValuedRangeInput";
 import {
+  setIsTyping,
   setProcentPaymant,
   setValuePaymant,
 } from "../store/action-creators/input";
 import { numberWithSpaces, deleteLastNumber } from "../common/composeNumber";
 import { TransparentTextInput } from "../styledComponents/Inputs";
-import { backspaceKey } from "../common/keyCode";
+import { backspaceTypeInput } from "../common/onInputTypes";
 
 const PaymentRangeInput = () => {
-  const dispatch = useDispatch();
   const payment = useSelector((state) => state.input.payment);
   const price = useSelector((state) => state.input.price);
+  const [value, setValue] = useState(payment.value);
+  const [isFocus, setIsFocus] = useState(false);
+
+  const dispatch = useDispatch();
+  const textInputRef = useRef();
 
   const setProcentValue = (procentValue) =>
     dispatch(setProcentPaymant(procentValue, price.value));
 
-  const onTextInput = (ev) => {
-    let value = ev.target.value;
-    value = parseInt(value.replaceAll(" ", "").replaceAll("₽", "")) || 0;
-    dispatch(setValuePaymant(value, price.value));
+  //Set value in store after end of typing
+  const setDeboundedInput = (currValue) => {
+    currValue = parseInt(currValue) || 0;
+    !textInputRef.typingTimer && setTypingState(true);
+    clearTimeout(textInputRef.typingTimer);
+    textInputRef.typingTimer = setTimeout(onEndType.bind(null, currValue), 500);
   };
 
   useEffect(() => {
     dispatch(setProcentPaymant(payment.procentValue, price.value));
   }, [dispatch, payment.procentValue, price]);
 
-  const onKeyPressRemove = (event) => {
-    const keyCode = event.code;
-    if (keyCode === backspaceKey) {
-      const currValue = payment.value.toString();
-      const withoutLastNumber = deleteLastNumber(currValue);
-      dispatch(setValuePaymant(withoutLastNumber, price.value));
+  // Change is focus state for make input white
+  const toggleFocus = () => setIsFocus((prevState) => !prevState);
+
+  const onTextInput = (event) => {
+    const inputType = event.nativeEvent.inputType;
+    let currValue = event.target.value.replaceAll(" ", "").replaceAll("₽", "");
+    if (inputType === backspaceTypeInput) {
+      currValue = deleteLastNumber(currValue);
     }
+    setValue(currValue);
+    setDeboundedInput(currValue);
   };
+
+  // Change is typing state in reducer
+  const setTypingState = (isTyping) => dispatch(setIsTyping(isTyping));
+
+  const onEndType = (currValue) => {
+    dispatch(setValuePaymant(currValue, price.value));
+    setTypingState(false);
+  };
+
+  // Set calced state from redux to inner state(;
+  useEffect(() => setValue(payment.value), [payment]);
 
   return (
     <Container>
       <GilroyH3>Первоначальный взнос</GilroyH3>
-      <ValuedRangeInput value={payment.procentValue} setValue={setProcentValue}>
+      <ValuedRangeInput
+        isFocus={isFocus}
+        value={payment.procentValue}
+        setValue={setProcentValue}
+      >
         <ValueContainer>
           <TransparentTextInput
+            value={`${numberWithSpaces(value)} ₽`}
+            onFocus={toggleFocus}
             onInput={onTextInput}
-            value={`${numberWithSpaces(payment.value)} ₽`}
-            onKeyDown={onKeyPressRemove}
+            onBlur={toggleFocus}
+            ref={textInputRef}
           />
           <ProcentBoldP20>{payment.procentValue}%</ProcentBoldP20>
         </ValueContainer>

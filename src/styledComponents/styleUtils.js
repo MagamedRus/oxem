@@ -7,5 +7,5 @@ export const disabledInput = css`
 
 export const disabledButton = css`
   pointer-events: none;
-  filter: invert(10%) brightness(110%);
+  filter: grayscale(60%) brightness(130%);
 `;

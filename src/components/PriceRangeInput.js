@@ -44,8 +44,8 @@ const PriceRangeInput = () => {
 
   const setProcentValue = (procentValue) => {
     procentValue = roundIfFloat(procentValue);
-    const currValue = (priceRange.max * procentValue) / 100;
-    currValue >= priceRange.min && dispatch(setProcentPrice(procentValue));
+    const currValue = (priceRange.min * procentValue) /100;
+    currValue <= priceRange.min && dispatch(setProcentPrice(procentValue));
   };
 
   // Change is typing state in reducer

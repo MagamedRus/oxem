@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { NekstBlackH2 } from "../styledComponents/Headers";
-import { StyledRangeInput } from "../styledComponents/Inputs";
+import { RangeSlider, StyledRangeInput } from "../styledComponents/Inputs";
 import { disabledInput } from "../styledComponents/styleUtils";
 
 const ValuedRangeInput = ({
@@ -25,6 +25,7 @@ const ValuedRangeInput = ({
         onInput={onInput}
         {...initialRangeProps}
       />
+      <RangeSlider value={value} />
     </Container>
   );
 };

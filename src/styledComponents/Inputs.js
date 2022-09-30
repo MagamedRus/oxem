@@ -9,11 +9,9 @@ const sliderThumbStyles = css`
   background: #ff9514;
   cursor: pointer;
   position: relative;
-  top: -10px;
   &:active {
     width: 24px;
     height: 24px;
-    top: -12px;
   }
 `;
 
@@ -54,11 +52,6 @@ export const StyledRangeInput = styled.input.attrs({
   &::-ms-thumb {
     ${sliderThumbStyles}
   }
-  &::-webkit-slider-runnable-track {
-    height: 2px;
-    border-radius: 1px 1px 0 0;
-    ${animatedSlider}
-  }
 `;
 
 export const TransparentTextInput = styled.input.attrs({
@@ -75,4 +68,12 @@ export const TransparentTextInput = styled.input.attrs({
   line-height: 36px;
   color: #575757;
   outline: none;
+`;
+
+export const RangeSlider = styled.span`
+  position: relative;
+  top: -1px;
+  height: 2px;
+  border-radius: 1px 1px 0 0;
+  ${animatedSlider};
 `;

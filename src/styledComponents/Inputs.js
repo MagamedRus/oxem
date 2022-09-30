@@ -4,6 +4,7 @@ const sliderThumbStyles = css`
   -webkit-appearance: none;
   height: 20px;
   width: 20px;
+  border: 0;
   border-radius: 50%;
   background: #ff9514;
   cursor: pointer;

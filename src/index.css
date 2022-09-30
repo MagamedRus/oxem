@@ -1,4 +1,9 @@
-html,body {
-  height: 100%;
-  margin: 0;
+@font-face {
+  font-family: "Nekst-Black";
+  src: local("Nekst-Black"), url(./assets/fonts/Nekst-Black.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Nekst-Black";
+  src: local("Gilroy"), url(./assets/fonts/Gilroy-Regular.ttf) format("truetype");
 }

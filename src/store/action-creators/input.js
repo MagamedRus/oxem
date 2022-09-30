@@ -113,17 +113,15 @@ export const setValueLeasing = (value) => (dispatch) => {
     value,
   };
 
-  console.log(leasingState);
-
   dispatch({
     type: InputsActionTypes.SET_LEASING_TERM,
     payload: leasingState,
   });
 };
 
-export const setIsTyping = (isTyping) => (dispatch) => {
+export const setTypingInput = (typingInput) => (dispatch) => {
   dispatch({
-    type: InputsActionTypes.SET_IS_TYPING,
-    payload: isTyping,
+    type: InputsActionTypes.SET_TYPING_INPUT,
+    payload: typingInput,
   });
 };

@@ -5,13 +5,14 @@ import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
 import ValuedRangeInput from "./ValuedRangeInput";
 import {
-  setIsTyping,
+  setTypingInput,
   setProcentLeasing,
   setValueLeasing,
 } from "../store/action-creators/input";
 import { TransparentTextInput } from "../styledComponents/Inputs";
 import { leasingTerm } from "../constants/calc";
 import { roundIfFloat } from "../common/calc";
+import { inputTypes } from "../constants/input";
 
 function LeasingRangeInput() {
   const [isFocus, setIsFocus] = useState(false);
@@ -41,7 +42,11 @@ function LeasingRangeInput() {
   };
 
   // Change is typing state in reducer
-  const setTypingState = (isTyping) => dispatch(setIsTyping(isTyping));
+  const setTypingState = (isTyping) => {
+    isTyping
+      ? dispatch(setTypingInput(inputTypes.LEASING))
+      : dispatch(setTypingInput(null));
+  };
 
   const onEndType = (currValue) => {
     dispatch(setValueLeasing(currValue));

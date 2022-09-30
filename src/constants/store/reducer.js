@@ -11,5 +11,5 @@ export const initialInputState = {
     procentValue: 10,
     value: 100000, // min price / 10 min procent = 100000
   },
-  isTyping: false,
+  typingInput: null,
 };

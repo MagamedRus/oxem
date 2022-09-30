@@ -5,7 +5,7 @@ import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
 import ValuedRangeInput from "./ValuedRangeInput";
 import {
-  setIsTyping,
+  setTypingInput,
   setProcentPrice,
   setValuePrice,
 } from "../store/action-creators/input";
@@ -13,6 +13,7 @@ import { numberWithSpaces } from "../common/composeNumber";
 import { TransparentTextInput } from "../styledComponents/Inputs";
 import { price as priceRange } from "../constants/calc";
 import { roundIfFloat } from "../common/calc";
+import { inputTypes } from "../constants/input";
 
 const PriceRangeInput = () => {
   const price = useSelector((state) => state.input.price);
@@ -47,8 +48,11 @@ const PriceRangeInput = () => {
   };
 
   // Change is typing state in reducer
-  const setTypingState = (isTyping) => dispatch(setIsTyping(isTyping));
-
+  const setTypingState = (isTyping) => {
+    isTyping
+      ? dispatch(setTypingInput(inputTypes.PAYMENT))
+      : dispatch(setTypingInput(null));
+  };
   // Set calced state from redux to inner state(;
   useEffect(() => setValue(price.value), [price]);
 

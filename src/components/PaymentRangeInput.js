@@ -5,7 +5,7 @@ import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
 import ValuedRangeInput from "./ValuedRangeInput";
 import {
-  setIsTyping,
+  setTypingInput,
   setProcentPaymant,
   setValuePaymant,
 } from "../store/action-creators/input";
@@ -14,6 +14,7 @@ import { TransparentTextInput } from "../styledComponents/Inputs";
 import { backspaceTypeInput } from "../common/onInputTypes";
 import { roundIfFloat } from "../common/calc";
 import { initialPayment } from "../constants/calc";
+import { inputTypes } from "../constants/input";
 
 const PaymentRangeInput = () => {
   const payment = useSelector((state) => state.input.payment);
@@ -56,7 +57,11 @@ const PaymentRangeInput = () => {
   };
 
   // Change is typing state in reducer
-  const setTypingState = (isTyping) => dispatch(setIsTyping(isTyping));
+  const setTypingState = (isTyping) => {
+    isTyping
+      ? dispatch(setTypingInput(inputTypes.PAYMENT))
+      : dispatch(setTypingInput(null));
+  };
 
   const onEndType = (currValue) => {
     dispatch(setValuePaymant(currValue, price.value));

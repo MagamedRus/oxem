@@ -67,7 +67,7 @@ const Container = styled.div`
   justify-content: center;
   max-width: 1440px;
   padding: 0 47px;
-  height: 100%;
+  min-height: 100vh;
   margin: 0 auto;
 
   @media ${deviceSizes.laptop} {
@@ -75,6 +75,7 @@ const Container = styled.div`
     padding-top: 120px;
     padding-bottom: 50px;
     justify-content: flex-start;
+    min-height: unset;
   }
   @media ${deviceSizes.tablet} {
     padding: 64px 36px;

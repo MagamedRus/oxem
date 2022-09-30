@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
@@ -13,6 +12,7 @@ import { TransparentTextInput } from "../styledComponents/Inputs";
 import { leasingTerm } from "../constants/calc";
 import { roundIfFloat } from "../common/calc";
 import { inputTypes } from "../constants/input";
+import { RangeValueContainer, TitledRangeContainer } from "../styledComponents/Containers";
 
 function LeasingRangeInput() {
   const [isFocus, setIsFocus] = useState(false);
@@ -57,7 +57,7 @@ function LeasingRangeInput() {
   useEffect(() => setValue(leasing.value), [leasing]);
 
   return (
-    <Container>
+    <TitledRangeContainer>
       <GilroyH3>Срок лизинга</GilroyH3>
       <ValuedRangeInput
         step={1.666} // 1.666 is 100(max procent) / 60(max value)
@@ -65,7 +65,7 @@ function LeasingRangeInput() {
         setValue={setProcentValue}
         isFocus={isFocus}
       >
-        <ValueContainer>
+        <RangeValueContainer>
           <TransparentTextInput
             onInput={onTextInput}
             value={value}
@@ -74,25 +74,11 @@ function LeasingRangeInput() {
             ref={textInputRef}
           />
           <BoldP30>мес.</BoldP30>
-        </ValueContainer>
+        </RangeValueContainer>
       </ValuedRangeInput>
-    </Container>
+    </TitledRangeContainer>
   );
 }
 
 export default LeasingRangeInput;
 
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  height: 119px;
-  width: 427px;
-`;
-
-const ValueContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-`;

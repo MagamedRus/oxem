@@ -15,6 +15,7 @@ import { backspaceTypeInput } from "../common/onInputTypes";
 import { roundIfFloat } from "../common/calc";
 import { initialPayment } from "../constants/calc";
 import { inputTypes } from "../constants/input";
+import { RangeValueContainer, TitledRangeContainer } from "../styledComponents/Containers";
 
 const PaymentRangeInput = () => {
   const { price, typingInput, payment } = useSelector((state) => state.input);
@@ -78,7 +79,7 @@ const PaymentRangeInput = () => {
   }, [typingInput]);
 
   return (
-    <Container>
+    <TitledRangeContainer>
       <GilroyH3>Первоначальный взнос</GilroyH3>
       <ValuedRangeInput
         isFocus={isFocus}
@@ -86,7 +87,7 @@ const PaymentRangeInput = () => {
         value={payment.procentValue}
         setValue={setProcentValue}
       >
-        <ValueContainer>
+        <RangeValueContainer>
           <TransparentTextInput
             value={`${numberWithSpaces(value)} ₽`}
             onFocus={toggleFocus}
@@ -95,29 +96,14 @@ const PaymentRangeInput = () => {
             ref={textInputRef}
           />
           <ProcentBoldP20>{roundIfFloat(payment.procentValue)}%</ProcentBoldP20>
-        </ValueContainer>
+        </RangeValueContainer>
       </ValuedRangeInput>
-    </Container>
+    </TitledRangeContainer>
   );
 };
 
 export default PaymentRangeInput;
 
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  width: 427px;
-  height: 119px;
-`;
-
-const ValueContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  height: 100%;
-`;
 
 const ProcentBoldP20 = styled(BoldP30)`
   display: flex;

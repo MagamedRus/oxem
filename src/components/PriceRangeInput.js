@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
@@ -14,6 +13,7 @@ import { TransparentTextInput } from "../styledComponents/Inputs";
 import { price as priceRange } from "../constants/calc";
 import { roundIfFloat } from "../common/calc";
 import { inputTypes } from "../constants/input";
+import { RangeValueContainer, TitledRangeContainer } from "../styledComponents/Containers";
 
 const PriceRangeInput = () => {
   const price = useSelector((state) => state.input.price);
@@ -57,7 +57,7 @@ const PriceRangeInput = () => {
   useEffect(() => setValue(price.value), [price]);
 
   return (
-    <Container>
+    <TitledRangeContainer>
       <GilroyH3>Стоимость автомобиля</GilroyH3>
       <ValuedRangeInput
         value={price.procentValue}
@@ -65,7 +65,7 @@ const PriceRangeInput = () => {
         step={4}
         isFocus={isFocus}
       >
-        <ValueContainer>
+        <RangeValueContainer>
           <TransparentTextInput
             ref={textInputRef}
             onFocus={toggleFocus}
@@ -74,26 +74,11 @@ const PriceRangeInput = () => {
             value={numberWithSpaces(value)}
           />
           <BoldP30>₽</BoldP30>
-        </ValueContainer>
+        </RangeValueContainer>
       </ValuedRangeInput>
-    </Container>
+    </TitledRangeContainer>
   );
 };
 
 export default PriceRangeInput;
 
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  width: 427px;
-  height: 119px;
-`;
-
-const ValueContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  height: 100%;
-`;

@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { NekstBlackH2 } from "../styledComponents/Headers";
 import { StyledRangeInput } from "../styledComponents/Inputs";
 
@@ -7,12 +7,13 @@ const ValuedRangeInput = ({
   setValue,
   value,
   children,
+  isFocus,
   ...initialRangeProps
 }) => {
   const onInput = (val) => setValue(val.target.value);
 
   return (
-    <Container>
+    <Container isFocus={isFocus}>
       {children || <NekstBlackH2>{value}</NekstBlackH2>}
       <StyledRangeInput
         step={initialRangeProps.step || 2}
@@ -28,12 +29,17 @@ const ValuedRangeInput = ({
 
 export default ValuedRangeInput;
 
+const whiteBackgroundContent = css`
+  background: white;
+`;
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 68px;
-  
+  height: 64px;
   padding: 0 24px;
+  border: 2px solid #f3f3f4;
   background: #f3f3f4;
   border-radius: 16px;
+  ${(props) => props.isFocus && whiteBackgroundContent}
 `;

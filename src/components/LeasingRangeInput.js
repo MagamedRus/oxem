@@ -1,26 +1,50 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
 import ValuedRangeInput from "./ValuedRangeInput";
 import {
+  setIsTyping,
   setProcentLeasing,
   setValueLeasing,
 } from "../store/action-creators/input";
-import { numberWithSpaces } from "../common/composeNumber";
 import { TransparentTextInput } from "../styledComponents/Inputs";
 
-const LeasingRangeInput = () => {
-  const dispatch = useDispatch();
+function LeasingRangeInput() {
+  const [isFocus, setIsFocus] = useState(false);
   const leasing = useSelector((state) => state.input.leasing);
-  const setValue = (procentValue) => dispatch(setProcentLeasing(procentValue));
+  const [value, setValue] = useState(leasing.value);
 
-  const onTextInput = (ev) => {
-    let value = ev.target.value;
-    value = parseInt(value.replaceAll(" ", "").replaceAll("₽", "")) || 0;
-    dispatch(setValueLeasing(value));
+  const dispatch = useDispatch();
+  const textInputRef = useRef();
+
+  // Change is focus state for make input white
+  const toggleFocus = () => setIsFocus((prevState) => !prevState);
+
+  // On user input -> change state in reducer for this input type
+  const onTextInput = async (ev) => {
+    let currValue = ev.target.value;
+    currValue = parseInt(currValue) || 0;
+    setValue(currValue);
+    !textInputRef.typingTimer && setTypingState(true);
+    clearTimeout(textInputRef.typingTimer);
+    textInputRef.typingTimer = setTimeout(onEndType.bind(this, currValue), 500);
   };
+
+  const setProcentValue = (procentValue) =>
+    dispatch(setProcentLeasing(procentValue));
+
+  // Change is typing state in reducer
+  const setTypingState = (isTyping) => dispatch(setIsTyping(isTyping));
+
+  const onEndType = (currValue) => {
+    dispatch(setValueLeasing(currValue));
+    setTypingState(false);
+  };
+
+  // Set calced state from redux to inner state(;
+  useEffect(() => setValue(leasing.value), [leasing]);
 
   return (
     <Container>
@@ -28,19 +52,23 @@ const LeasingRangeInput = () => {
       <ValuedRangeInput
         step={1.666} // 1.666 is 100(max procent) / 60(max value)
         value={leasing.procentValue}
-        setValue={setValue}
+        setValue={setProcentValue}
+        isFocus={isFocus}
       >
         <ValueContainer>
           <TransparentTextInput
             onInput={onTextInput}
-            value={numberWithSpaces(leasing.value)}
+            value={value}
+            onFocus={toggleFocus}
+            onBlur={toggleFocus}
+            ref={textInputRef}
           />
           <BoldP30>мес.</BoldP30>
         </ValueContainer>
       </ValuedRangeInput>
     </Container>
   );
-};
+}
 
 export default LeasingRangeInput;
 

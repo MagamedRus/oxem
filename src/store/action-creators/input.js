@@ -102,10 +102,6 @@ export const setProcentLeasing = (procentValue) => (dispatch) => {
 };
 
 export const setValueLeasing = (value) => (dispatch) => {
-  // let value = leasingTerm.max * (procentValue / 100) || leasingTerm.min;
-  // value = Math.round(value);
-  // procentValue = parseInt(procentValue) < 1.6 ? 1.6 : procentValue;
-
   const minLeasingProcent = (leasingTerm.min / leasingTerm.max) * 100;
   let procentValue = (value / leasingTerm.max) * 100;
 
@@ -119,6 +115,8 @@ export const setValueLeasing = (value) => (dispatch) => {
     procentValue,
     value,
   };
+
+  console.log(leasingState);
 
   dispatch({
     type: InputsActionTypes.SET_LEASING_TERM,

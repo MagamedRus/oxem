@@ -43,12 +43,12 @@ function LeasingRangeInput() {
 
   // Change is typing state in reducer
   const setTypingState = (isTyping) => {
-    isTyping
-      ? dispatch(setTypingInput(inputTypes.LEASING))
-      : dispatch(setTypingInput(null));
+    let typingState = isTyping ? inputTypes.LEASING : null;
+    dispatch(setTypingInput(typingState));
   };
 
   const onEndType = (currValue) => {
+    textInputRef.typingTimer = null;
     dispatch(setValueLeasing(currValue));
     setTypingState(false);
   };

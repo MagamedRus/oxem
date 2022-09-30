@@ -37,6 +37,7 @@ const PriceRangeInput = () => {
   const toggleFocus = () => setIsFocus((prevState) => !prevState);
 
   const onEndType = (currValue) => {
+    textInputRef.typingTimer = null;
     dispatch(setValuePrice(currValue));
     setTypingState(false);
   };
@@ -49,9 +50,8 @@ const PriceRangeInput = () => {
 
   // Change is typing state in reducer
   const setTypingState = (isTyping) => {
-    isTyping
-      ? dispatch(setTypingInput(inputTypes.PAYMENT))
-      : dispatch(setTypingInput(null));
+    let typingState = isTyping ? inputTypes.PRICE : null;
+    dispatch(setTypingInput(typingState));
   };
   // Set calced state from redux to inner state(;
   useEffect(() => setValue(price.value), [price]);

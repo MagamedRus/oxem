@@ -2,6 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { NekstBlackH2 } from "../styledComponents/Headers";
 import { StyledRangeInput } from "../styledComponents/Inputs";
+import { disabledInput } from "../styledComponents/styleUtils";
 
 const ValuedRangeInput = ({
   setValue,
@@ -33,12 +34,6 @@ export default ValuedRangeInput;
 const whiteBackgroundContent = css`
   background: white;
 `;
-
-const disabled = css`
-  pointer-events: none;
-  filter: invert(10%) brightness(110%);
-`
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -48,5 +43,5 @@ const Container = styled.div`
   background: #f3f3f4;
   border-radius: 16px;
   ${(props) => props.isFocus && whiteBackgroundContent}
-  ${(props) => props.isDisabled && disabled}
+  ${(props) => props.isDisabled && disabledInput}
 `;

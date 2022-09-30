@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { deviceSizes } from "../constants/styles/sizes";
 import { disabledButton } from "./styleUtils";
 
 export const ConfirmButton = styled.button`
@@ -24,5 +25,16 @@ export const ConfirmButton = styled.button`
   }
   &:active {
     background: #575757;
+  }
+
+  @media ${deviceSizes.laptop} {
+    width: 345px;
+  }
+  @media ${deviceSizes.tabletS} {
+    font-size: 22px;
+    line-height: 20px;
+    height: 60px;
+    width: 100%;
+    min-width: unset;
   }
 `;

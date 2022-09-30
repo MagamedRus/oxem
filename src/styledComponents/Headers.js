@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { deviceSizes } from "../constants/styles/sizes";
 
 export const NekstBlackH1 = styled.h1`
   font-family: "Nekst-Black";
@@ -6,8 +7,16 @@ export const NekstBlackH1 = styled.h1`
   font-weight: 900;
   font-size: 54px;
   line-height: 90%;
+  max-width: 753px;
+  min-width: 500px;
+  text-align: left;
   color: #111111;
   margin: 0;
+
+  @media ${deviceSizes.tabletS} {
+    font-size: 34px;
+    min-width: 250px;
+  }
 `;
 
 export const NekstBlackH2 = styled.h2`

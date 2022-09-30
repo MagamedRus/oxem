@@ -1,5 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { deviceSizes } from "../constants/styles/sizes";
 import { NekstBlackH2 } from "../styledComponents/Headers";
 import { RangeSlider, StyledRangeInput } from "../styledComponents/Inputs";
 import { disabledInput } from "../styledComponents/styleUtils";
@@ -39,10 +40,15 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 64px;
-  padding: 0 24px;
+  padding: 0 20px;
   border: 2px solid #f3f3f4;
   background: #f3f3f4;
   border-radius: 16px;
   ${(props) => props.isFocus && whiteBackgroundContent}
   ${(props) => props.isDisabled && disabledInput}
+
+  @media ${deviceSizes.tabletS} {
+    height: 56px;
+    padding: 0 16px;
+  }
 `;

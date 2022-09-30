@@ -15,7 +15,11 @@ import { backspaceTypeInput } from "../common/onInputTypes";
 import { roundIfFloat } from "../common/calc";
 import { initialPayment } from "../constants/calc";
 import { inputTypes } from "../constants/input";
-import { RangeValueContainer, TitledRangeContainer } from "../styledComponents/Containers";
+import {
+  RangeValueContainer,
+  TitledRangeContainer,
+} from "../styledComponents/Containers";
+import { deviceSizes } from "../constants/styles/sizes";
 
 const PaymentRangeInput = () => {
   const { price, typingInput, payment } = useSelector((state) => state.input);
@@ -104,7 +108,6 @@ const PaymentRangeInput = () => {
 
 export default PaymentRangeInput;
 
-
 const ProcentBoldP20 = styled(BoldP30)`
   display: flex;
   position: relative;
@@ -114,6 +117,14 @@ const ProcentBoldP20 = styled(BoldP30)`
   font-size: 20px;
   width: 69px;
   height: 54px;
-  background: #ebebec;
+  background: rgba(224, 224, 224, .4);
   border-radius: 16px;
+
+  @media ${deviceSizes.tabletS} {
+    width: 67px;
+    height: 48px;
+    border-radius: 12px;
+    font-size: 22px;
+    left: 8px;
+  }
 `;

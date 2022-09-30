@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { deviceSizes } from "../constants/styles/sizes";
 
 const sliderThumbStyles = css`
   -webkit-appearance: none;
@@ -68,6 +69,10 @@ export const TransparentTextInput = styled.input.attrs({
   line-height: 36px;
   color: #575757;
   outline: none;
+  @media ${deviceSizes.tabletS} {
+    font-size: 22px;
+    line-height: 20px;
+  }
 `;
 
 export const RangeSlider = styled.span`

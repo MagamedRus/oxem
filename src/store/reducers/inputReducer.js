@@ -9,7 +9,7 @@ export const inputReducer = (state = initialInputState, action) => {
       return { ...state, payment: action.payload };
     case InputsActionTypes.SET_LEASING_TERM:
       return { ...state, leasing: action.payload };
-    case InputsActionTypes.SET_IS_TYPING:
+    case InputsActionTypes.SET_TYPING_INPUT:
       return { ...state, typingInput: action.payload };
     default:
       return state;

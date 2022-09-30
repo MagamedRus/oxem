@@ -8,12 +8,13 @@ const ValuedRangeInput = ({
   value,
   children,
   isFocus,
+  isDisabled,
   ...initialRangeProps
 }) => {
   const onInput = (val) => setValue(val.target.value);
 
   return (
-    <Container isFocus={isFocus}>
+    <Container isDisabled={isDisabled} isFocus={isFocus}>
       {children || <NekstBlackH2>{value}</NekstBlackH2>}
       <StyledRangeInput
         step={initialRangeProps.step || 2}
@@ -33,6 +34,11 @@ const whiteBackgroundContent = css`
   background: white;
 `;
 
+const disabled = css`
+  pointer-events: none;
+  filter: invert(10%) brightness(110%);
+`
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -42,4 +48,5 @@ const Container = styled.div`
   background: #f3f3f4;
   border-radius: 16px;
   ${(props) => props.isFocus && whiteBackgroundContent}
+  ${(props) => props.isDisabled && disabled}
 `;

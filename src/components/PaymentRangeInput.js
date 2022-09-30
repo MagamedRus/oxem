@@ -17,10 +17,10 @@ import { initialPayment } from "../constants/calc";
 import { inputTypes } from "../constants/input";
 
 const PaymentRangeInput = () => {
-  const payment = useSelector((state) => state.input.payment);
-  const price = useSelector((state) => state.input.price);
+  const { price, typingInput, payment } = useSelector((state) => state.input);
   const [value, setValue] = useState(payment.value);
   const [isFocus, setIsFocus] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const dispatch = useDispatch();
   const textInputRef = useRef();
@@ -58,24 +58,31 @@ const PaymentRangeInput = () => {
 
   // Change is typing state in reducer
   const setTypingState = (isTyping) => {
-    isTyping
-      ? dispatch(setTypingInput(inputTypes.PAYMENT))
-      : dispatch(setTypingInput(null));
+    let typingState = isTyping ? inputTypes.PAYMENT : null;
+    dispatch(setTypingInput(typingState));
   };
 
   const onEndType = (currValue) => {
+    textInputRef.typingTimer = null;
     dispatch(setValuePaymant(currValue, price.value));
     setTypingState(false);
   };
 
   // Set calced state from redux to inner state(;
-  useEffect(() => setValue(payment.value), [payment]);
+  useEffect(() => {
+    setValue(payment.value);
+  }, [payment]);
+
+  useEffect(() => {
+    setIsDisabled(typingInput === inputTypes.PRICE);
+  }, [typingInput]);
 
   return (
     <Container>
       <GilroyH3>Первоначальный взнос</GilroyH3>
       <ValuedRangeInput
         isFocus={isFocus}
+        isDisabled={isDisabled}
         value={payment.procentValue}
         setValue={setProcentValue}
       >

@@ -34,12 +34,10 @@ function App() {
       </RowContainer>
       <RowContainer>
         <TitledPrice
-          width={"427px"}
           price={sumLeasingPayment}
           title={"Сумма договора лизинга"}
         />
         <TitledPrice
-          width={"427px"}
           price={monthlyPayment}
           title={"Ежемесячный платеж от"}
         />

@@ -4,8 +4,8 @@ import { numberWithSpaces } from "../common/composeNumber";
 import { GilroyH3 } from "../styledComponents/Headers";
 import { BoldP30 } from "../styledComponents/Paragraphs";
 
-const TitledPrice = ({ price, title, width }) => (
-  <Container width={width}>
+const TitledPrice = ({ price, title }) => (
+  <Container>
     <Title>{title}</Title>
     <BoldP30>{numberWithSpaces(price)} ₽</BoldP30>
   </Container>
@@ -18,7 +18,8 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 49px;
-  width: ${(props) => props.width || "max-content"};
+  width: 100%;
+  max-width: 427px;
 `;
 
 const Title = styled(GilroyH3)`

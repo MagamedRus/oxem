@@ -7,9 +7,12 @@ import PriceRangeInput from "../components/PriceRangeInput";
 import TitledPrice from "../components/TitledPrice";
 import { NekstBlackH1 } from "../styledComponents/Headers";
 import { calcMonthlyPayment, calcSumLeasingPayment } from "../common/calc";
+import { ConfirmButton } from "../styledComponents/Button";
 
 function App() {
-  const { price, payment, leasing } = useSelector((state) => state.input);
+  const { price, payment, leasing, typingInput } = useSelector(
+    (state) => state.input
+  );
   const monthlyPayment = calcMonthlyPayment(
     payment.value,
     leasing.value,
@@ -23,7 +26,7 @@ function App() {
 
   return (
     <Container>
-      <NekstBlackH1>Рассчитайте стоимость автомобиля в лизинг</NekstBlackH1>
+      <Title>Рассчитайте стоимость автомобиля в лизинг</Title>
       <RowContainer>
         <PriceRangeInput />
         <PaymentRangeInput />
@@ -31,10 +34,16 @@ function App() {
       </RowContainer>
       <RowContainer>
         <TitledPrice
+          width={"427px"}
           price={sumLeasingPayment}
           title={"Сумма договора лизинга"}
         />
-        <TitledPrice price={monthlyPayment} title={"Ежемесячный платеж от"} />
+        <TitledPrice
+          width={"427px"}
+          price={monthlyPayment}
+          title={"Ежемесячный платеж от"}
+        />
+        <ConfirmButton disabled={typingInput}>Оставить заявку</ConfirmButton>
       </RowContainer>
     </Container>
   );
@@ -45,14 +54,31 @@ export default App;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 1440px;
-  padding: 0 
-  margin: auto 47px;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+`;
+
+const Title = styled(NekstBlackH1)`
+  width: 753px;
+  text-align: left;
+  margin-left: 47px;
+  margin-bottom: 32px;
 `;
 
 const RowContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 32px;
+  column-count: 3;
+  padding: 0;
+  margin: 0 47px;
   width: 1440px;
-  margin: auto;
+
+  &:nth-of-type(1) {
+    margin-bottom: 51px;
+  }
 `;

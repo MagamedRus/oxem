@@ -87,6 +87,7 @@ const Container = styled.div`
   justify-content: space-between;
   flex-direction: column;
   height: 119px;
+  width: 427px;
 `;
 
 const ValueContainer = styled.div`

@@ -3,7 +3,7 @@ import { disabledButton } from "./styleUtils";
 
 export const ConfirmButton = styled.button`
   background: #ff9514;
-  width: 345px;
+  width: 427px;
   height: 60px;
   border-radius: 40px;
   border: 0;

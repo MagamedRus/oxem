@@ -9,7 +9,7 @@ export function getOnlyNumbers(str) {
 }
 
 export function deleteSymbolByIndex(str, index) {
-  return str.slice(0, index) + str.slice(index + 1, 99999990);
+  return str.slice(0, index - 1) + str.slice(index + 1, 99999990);
 }
 
 /** deleting last number bypassing other symbols */

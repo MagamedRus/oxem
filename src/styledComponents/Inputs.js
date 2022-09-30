@@ -9,7 +9,6 @@ const sliderThumbStyles = css`
   cursor: pointer;
   position: relative;
   top: -10px;
-  top: -10px;
   &:active {
     width: 24px;
     height: 24px;

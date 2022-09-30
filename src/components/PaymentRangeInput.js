@@ -12,6 +12,7 @@ import {
 import { numberWithSpaces, deleteLastNumber } from "../common/composeNumber";
 import { TransparentTextInput } from "../styledComponents/Inputs";
 import { backspaceTypeInput } from "../common/onInputTypes";
+import { roundIfFloat } from "../common/calc";
 
 const PaymentRangeInput = () => {
   const payment = useSelector((state) => state.input.payment);
@@ -77,7 +78,7 @@ const PaymentRangeInput = () => {
             onBlur={toggleFocus}
             ref={textInputRef}
           />
-          <ProcentBoldP20>{payment.procentValue}%</ProcentBoldP20>
+          <ProcentBoldP20>{roundIfFloat(payment.procentValue)}%</ProcentBoldP20>
         </ValueContainer>
       </ValuedRangeInput>
     </Container>

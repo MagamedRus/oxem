@@ -10,3 +10,10 @@ export const calcSumLeasingPayment = (
   monthlyPayment,
   leasing
 ) => Math.round(initialPayment + monthlyPayment * leasing);
+
+export const roundIfFloat = (numb) => {
+  if (String(numb).includes(".")) {
+    numb = Math.trunc(numb);
+  }
+  return numb;
+};

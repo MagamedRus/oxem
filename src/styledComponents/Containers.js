@@ -5,7 +5,7 @@ export const TitledRangeContainer = styled.div`
   justify-content: space-between;
   flex-direction: column;
   height: 119px;
-  min-width: 200px;
+  min-width: 300px;
   max-width: 427px;
 `;
 

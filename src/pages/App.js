@@ -54,7 +54,8 @@ const Container = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  width: 1440px;
+  max-width: 1440px;
+  padding: 0 47px;
   height: 100%;
   margin: 0 auto;
 `;
@@ -62,20 +63,16 @@ const Container = styled.div`
 const Title = styled(NekstBlackH1)`
   width: 753px;
   text-align: left;
-  margin-left: 47px;
   margin-bottom: 32px;
 `;
 
 const RowContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 39px;
   column-gap: 32px;
-  column-count: 3;
   padding: 0;
-  margin: 0 47px;
-  width: 1440px;
-
+  width: 100%;
   &:nth-of-type(1) {
     margin-bottom: 51px;
   }

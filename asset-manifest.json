@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.287dc17a.css",
-    "main.js": "/static/js/main.6b225164.js",
-    "static/media/Nekst-Black.ttf": "/static/media/Nekst-Black.dffaebf93d38d4c41536.ttf",
-    "static/media/Gilroy-Regular.ttf": "/static/media/Gilroy-Regular.fa652e766b6a85a1f9cb.ttf",
-    "index.html": "/index.html",
-    "main.287dc17a.css.map": "/static/css/main.287dc17a.css.map",
-    "main.6b225164.js.map": "/static/js/main.6b225164.js.map"
+    "main.css": "/oxem/static/css/main.d9f72827.css",
+    "main.js": "/oxem/static/js/main.cb3b5f0b.js",
+    "static/media/Nekst-Black.ttf": "/oxem/static/media/Nekst-Black.dffaebf93d38d4c41536.ttf",
+    "static/media/Gilroy-Regular.ttf": "/oxem/static/media/Gilroy-Regular.fa652e766b6a85a1f9cb.ttf",
+    "index.html": "/oxem/index.html",
+    "main.d9f72827.css.map": "/oxem/static/css/main.d9f72827.css.map",
+    "main.cb3b5f0b.js.map": "/oxem/static/js/main.cb3b5f0b.js.map"
   },
   "entrypoints": [
-    "static/css/main.287dc17a.css",
-    "static/js/main.6b225164.js"
+    "static/css/main.d9f72827.css",
+    "static/js/main.cb3b5f0b.js"
   ]
 }
